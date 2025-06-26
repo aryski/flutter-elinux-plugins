@@ -6,6 +6,7 @@
 #define PACKAGES_VIDEO_PLAYER_VIDEO_PLAYER_ELINUX_GST_VIDEO_PLAYER_H_
 
 #include <gst/gst.h>
+#include <gst/app/gstappsink.h>
 
 #ifdef USE_EGL_IMAGE_DMABUF
 #include <gst/allocators/gstdmabuf.h>
@@ -57,7 +58,8 @@ class GstVideoPlayer {
     GstBus* bus;
     GstBuffer* buffer;
   };
-
+  // appsink frame callback (display-through-Flutter path)
+  static GstFlowReturn NewSampleHandler(GstAppSink* sink, gpointer user_data);
   static void HandoffHandler(GstElement* fakesink, GstBuffer* buf,
                              GstPad* new_pad, gpointer user_data);
   static GstBusSyncReply HandleGstMessage(GstBus* bus, GstMessage* message,

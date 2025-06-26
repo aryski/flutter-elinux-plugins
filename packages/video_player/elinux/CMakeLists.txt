@@ -8,7 +8,7 @@ set(PLUGIN_NAME "video_player_elinux_plugin")
 
 find_package(PkgConfig)
 pkg_check_modules(GLIB REQUIRED glib-2.0)
-pkg_check_modules(GSTREAMER REQUIRED gstreamer-1.0)
+pkg_check_modules(GSTREAMER REQUIRED gstreamer-1.0 gstreamer-app-1.0)
 if(USE_EGL_IMAGE_DMABUF)
 pkg_check_modules(GSTREAMER_GL REQUIRED gstreamer-gl-1.0)
 endif()
